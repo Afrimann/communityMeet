@@ -94,6 +94,8 @@
     border: 1px solid green;
     border-radius: 50%;
     padding: 5px 10px;
+    color: black;
+    font-weight: 600;
 }
 
 .form_progress_bar div > span:nth-child(2) {

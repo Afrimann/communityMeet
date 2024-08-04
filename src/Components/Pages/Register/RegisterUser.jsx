@@ -5,13 +5,13 @@ import logo from '../Images/comm_meetlogo.avif';
 import s_img1 from '../Images/small_img1.webp';
 import s_img2 from '../Images/small_img2.webp';
 import s_img3 from '../Images/small_img3.webp';
-import bubble from '../Images/bubble video.mp4'
+import bubble from '../Images/bubble video.mp4';
 import './Register.css';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterUser = () => {
     const [currentStep, setCurrentStep] = useState(1);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -19,6 +19,7 @@ const RegisterUser = () => {
         location: ''
     });
     const [error, setError] = useState('');
+    const [isChecked, setIsChecked] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -48,15 +49,21 @@ const RegisterUser = () => {
         setCurrentStep(currentStep - 1);
     };
 
+    const handleCheckboxChange = (e) => {
+        setIsChecked(e.target.checked);
+    };
+
     const handleRegister = async (e) => {
         e.preventDefault();
+        if (!formData.location) {
+            setError("Location is required");
+            return;
+        }
         try {
             await createUserWithEmailAndPassword(auth, formData.email, formData.password);
             console.log('User Registered Successfully');
             alert('Success');
-            navigate('/dashboard',
-                { state: { formData } }
-            )
+            navigate('/login', { state: { formData } });
         } catch (error) {
             setError(error.message);
         }
@@ -171,10 +178,11 @@ const RegisterUser = () => {
                                         type="checkbox"
                                         name="check"
                                         id="check"
+                                        onChange={handleCheckboxChange}
                                     />
                                     <div>I agree to <span className='spec'>Terms and Conditions</span> & <span className='spec'>Privacy Policy</span></div>
                                 </div>
-                                <button type="submit" onClick={handleRegister}>Register</button>
+                                <button type="submit" onClick={handleRegister} disabled={!isChecked}>Register</button>
                             </form>
                         )}
                         {error && <p>{error}</p>}

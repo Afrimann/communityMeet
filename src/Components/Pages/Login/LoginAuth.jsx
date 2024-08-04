@@ -4,6 +4,7 @@ import auth from '../../../Firebase';
 import logo from '../Images/comm_meetlogo.avif';
 import bubble from '../Images/bubble video.mp4'
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 const LoginUser = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ const LoginUser = () => {
     password: ''
   });
   const [error, setError] = useState('');
-
+  const Navigate = useNavigate()
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -22,7 +23,10 @@ const LoginUser = () => {
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
       console.log('User Logged In Successfully');
-      alert('Success');
+      // alert('Success');
+      Navigate('/dashboard',
+        {state : {formData}}
+      )
     } catch (error) {
       setError(error.message);
     }
