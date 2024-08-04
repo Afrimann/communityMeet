@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 
 const RegisterUser = () => {
     const [currentStep, setCurrentStep] = useState(1);
-    // const [checked,setChecked] = useState(true)
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
         email: '',

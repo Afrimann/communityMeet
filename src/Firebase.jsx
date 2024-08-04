@@ -1,21 +1,17 @@
-// Import the functions you need from the SDKs you need
+// src/Firebase.js
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth } from 'firebase/auth'
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDM797fj8obvl_fEslRw23BKdQmG8eZ7Is",
-  authDomain: "communitymeet-571ff.firebaseapp.com",
-  projectId: "communitymeet-571ff",
-  storageBucket: "communitymeet-571ff.appspot.com",
-  messagingSenderId: "163279614704",
-  appId: "1:163279614704:web:430dcad5ac68a942264835",
-  measurementId: "G-JYS8C9TFG8"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app)
+const auth = getAuth(app);
 
-export default (auth)
+export default { auth };
