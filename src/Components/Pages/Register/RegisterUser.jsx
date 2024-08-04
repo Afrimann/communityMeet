@@ -174,7 +174,7 @@ const RegisterUser = () => {
                                     />
                                     <div>I agree to <span className='spec'>Terms and Conditions</span> & <span className='spec'>Privacy Policy</span></div>
                                 </div>
-                                <button type="submit">Register</button>
+                                <button type="submit" onClick={handleRegister}>Register</button>
                             </form>
                         )}
                         {error && <p>{error}</p>}

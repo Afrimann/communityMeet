@@ -64,7 +64,7 @@ const LoginUser = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit">Login</button>
+              <button type="submit" onClick={handleLogin}>Login</button>
               {error && <p>{error}</p>}
             </form>
           </div>
