@@ -5,6 +5,7 @@ import logo from '../Images/comm_meetlogo.avif';
 import s_img1 from '../Images/small_img1.webp';
 import s_img2 from '../Images/small_img2.webp';
 import s_img3 from '../Images/small_img3.webp';
+import bubble from '../Images/bubble video.mp4'
 import './Register.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -55,7 +56,7 @@ const RegisterUser = () => {
             console.log('User Registered Successfully');
             alert('Success');
             navigate('/dashboard',
-                {state : {formData}}
+                { state: { formData } }
             )
         } catch (error) {
             setError(error.message);
@@ -180,7 +181,17 @@ const RegisterUser = () => {
                         {error && <p>{error}</p>}
                     </div>
                 </div>
-                <div className="col_2"></div>
+                <div className="col_2">
+                    <div className="video-frame">
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            src={bubble}>
+                            {bubble}
+                        </video>
+                    </div>
+                </div>
             </main>
         </div>
     );

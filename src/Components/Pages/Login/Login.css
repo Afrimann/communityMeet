@@ -1,0 +1,60 @@
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.col_1,
+.col_2 {
+    flex: 1 1 0;
+    position: relative;
+}
+
+.video-frame {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-frame video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.headitems, .text_content, .login-form {
+    padding: 20px;
+    box-sizing: border-box;
+}
+.login-form form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-top: 30px;
+    padding: 0 30px;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .col_1, .col_2 {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .video-frame video {
+        height: auto;
+        width: 100%;
+    }
+}
+
+
+
+
